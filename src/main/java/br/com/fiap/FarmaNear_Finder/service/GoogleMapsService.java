@@ -15,14 +15,12 @@ import java.util.Objects;
 @Service
 public class GoogleMapsService {
 
-    private final GeoApiContext context;
+    @Value("${maps.google.apikey}")
+    private String apiKey;
 
-    @Autowired
-    public GoogleMapsService(@Value("${maps.google.apikey}") String apiKey){
-        context = new GeoApiContext.Builder()
-                .apiKey(apiKey)
-                .build();
-    }
+    private final GeoApiContext context = new GeoApiContext.Builder()
+            .apiKey(apiKey)
+            .build();
 
     public LatLng getLatLngFromAddress(String address) throws InterruptedException, ApiException, IOException {
         GeocodingResult[] results = GeocodingApi.geocode(context, address).await();
