@@ -1,6 +1,6 @@
-package br.com.fiap.FarmaNear_Finder.gateway.adapters.google.maps.api;
+package br.com.fiap.FarmaNear_Finder.infra.gateway.adapters.google.maps.api;
 
-import br.com.fiap.FarmaNear_Finder.domain.Location;
+import br.com.fiap.FarmaNear_Finder.entities.LocationEntity;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
@@ -21,7 +21,7 @@ public class GoogleApiAdapter {
             .apiKey(apiKey)
             .build();
 
-    public Location getLocationByAddress(String address) {
+    public LocationEntity getLocationByAddress(String address) {
         try {
             GeocodingResult[] results = GeocodingApi.geocode(context, address).await();
 
@@ -38,9 +38,9 @@ public class GoogleApiAdapter {
         }
     }
 
-    private Location convertToLocation(GeocodingResult result) {
+    private LocationEntity convertToLocation(GeocodingResult result) {
         LatLng location = result.geometry.location;
-        return new Location(location.lat, location.lng);
+        return new LocationEntity(location.lat, location.lng);
     }
 
 }

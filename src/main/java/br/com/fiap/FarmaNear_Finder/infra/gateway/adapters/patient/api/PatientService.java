@@ -1,6 +1,6 @@
-package br.com.fiap.FarmaNear_Finder.gateway.adapters.patient.api;
+package br.com.fiap.FarmaNear_Finder.infra.gateway.adapters.patient.api;
 
-import br.com.fiap.FarmaNear_Finder.gateway.adapters.patient.api.fallback.PatientServiceFallback;
+import br.com.fiap.FarmaNear_Finder.infra.gateway.adapters.patient.api.fallback.PatientServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 
 @FeignClient(
