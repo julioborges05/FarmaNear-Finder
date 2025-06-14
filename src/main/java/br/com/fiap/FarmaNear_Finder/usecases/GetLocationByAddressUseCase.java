@@ -1,7 +1,7 @@
-package br.com.fiap.FarmaNear_Finder.usecase;
+package br.com.fiap.FarmaNear_Finder.usecases;
 
-import br.com.fiap.FarmaNear_Finder.domain.Location;
-import br.com.fiap.FarmaNear_Finder.gateway.adapters.google.maps.api.GoogleApiAdapter;
+import br.com.fiap.FarmaNear_Finder.entities.LocationEntity;
+import br.com.fiap.FarmaNear_Finder.infra.gateway.adapters.google.maps.api.GoogleApiAdapter;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +13,7 @@ public class GetLocationByAddressUseCase {
         this.mapsApi = mapsApi;
     }
 
-    public Location getLocationByAddress(String address) {
+    public LocationEntity getLocationByAddress(String address) {
         return mapsApi.getLocationByAddress(address);
     }
 
