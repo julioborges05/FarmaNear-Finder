@@ -1,11 +1,11 @@
-package br.com.fiap.FarmaNear_Finder.entities;
+package br.com.fiap.FarmaNear_Finder.model;
 
-public class PatientEntity {
+public class Patient {
 
   private final Long id;
   private final String addressName;
 
-  public PatientEntity(Long id, String addressName) {
+  public Patient(Long id, String addressName) {
     checkId(id);
     checkAddress(addressName);
 
@@ -15,10 +15,6 @@ public class PatientEntity {
 
   public String getAddressName() {
     return addressName;
-  }
-
-  public Long getId() {
-    return id;
   }
 
   private static void checkId(Long id) {

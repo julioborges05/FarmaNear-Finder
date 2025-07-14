@@ -1,7 +1,7 @@
-package br.com.fiap.FarmaNear_Finder.usecases;
+package br.com.fiap.FarmaNear_Finder.service;
 
-import br.com.fiap.FarmaNear_Finder.entities.PatientEntity;
-import br.com.fiap.FarmaNear_Finder.infra.gateway.adapters.patient.api.PatientService;
+import br.com.fiap.FarmaNear_Finder.model.Patient;
+import br.com.fiap.FarmaNear_Finder.client.patient.api.PatientService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +13,7 @@ public class PatientFinderUseCase {
     this.patientService = patientService;
   }
 
-  public PatientEntity findByPatientId(Long patientId) {
+  public Patient findByPatientId(Long patientId) {
     // TODO: Call the patient service to retrieve patient information
     return null;
   }

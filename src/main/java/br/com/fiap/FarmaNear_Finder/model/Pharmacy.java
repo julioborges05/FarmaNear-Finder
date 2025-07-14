@@ -1,22 +1,22 @@
-package br.com.fiap.FarmaNear_Finder.entities;
+package br.com.fiap.FarmaNear_Finder.model;
 
-public class PharmacyEntity {
+public class Pharmacy {
 
   private final Long id;
   private final String name;
   private final String addressName;
-  private final LocationEntity locationEntity;
+  private final Location location;
 
-  public PharmacyEntity(long id, String name, String addressName, LocationEntity locationEntity) {
+  public Pharmacy(long id, String name, String addressName, Location location) {
     checkId(id);
     checkName(name);
     checkAddress(addressName);
-    checkLocationEntity(locationEntity);
+    checkLocationEntity(location);
 
     this.id = id;
     this.name = name;
     this.addressName = addressName;
-    this.locationEntity = locationEntity;
+    this.location = location;
   }
 
   public Long getId() {
@@ -31,8 +31,8 @@ public class PharmacyEntity {
     return addressName;
   }
 
-  public LocationEntity getLocationEntity() {
-    return locationEntity;
+  public Location getLocationEntity() {
+    return location;
   }
 
   private static void checkId(Long id) {
@@ -53,8 +53,8 @@ public class PharmacyEntity {
     }
   }
 
-  private static void checkLocationEntity(LocationEntity locationEntity) {
-    if (locationEntity == null) {
+  private static void checkLocationEntity(Location location) {
+    if (location == null) {
       throw new IllegalArgumentException("Invalid Location Entity");
     }
   }
