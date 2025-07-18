@@ -32,4 +32,19 @@ public class Pharmacy {
         this.lng = locationDto.lng();
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
 }

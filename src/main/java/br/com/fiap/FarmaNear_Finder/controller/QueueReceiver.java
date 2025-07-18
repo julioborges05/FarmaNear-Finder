@@ -14,7 +14,7 @@ public class QueueReceiver {
         this.pharmacyService = pharmacyService;
     }
 
-    @KafkaListener(topics = "pharmacy.topic", groupId = "pharmacy.group")
+    @KafkaListener(topics = "drugstore-data")
     public void receive(PharmacyDto pharmacyCreated) {
         pharmacyService.handleWithPharmacyCreatedEvent(pharmacyCreated);
     }
