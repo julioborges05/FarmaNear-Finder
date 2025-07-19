@@ -6,6 +6,7 @@ import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,9 +18,14 @@ public class GoogleApiAdapter {
     @Value("${maps.google.apikey}")
     private String apiKey;
 
-    private final GeoApiContext context = new GeoApiContext.Builder()
-            .apiKey(apiKey)
-            .build();
+    private GeoApiContext context;
+
+    @PostConstruct
+    private void init() {
+        context = new GeoApiContext.Builder()
+                .apiKey(apiKey)
+                .build();
+    }
 
     public LocationDto getLocationByAddress(String address) {
         try {

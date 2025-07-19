@@ -1,6 +1,6 @@
 package br.com.fiap.FarmaNear_Finder.controller;
 
-import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.PharmacyDto;
+import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.PharmacyQueueReceiverDto;
 import br.com.fiap.FarmaNear_Finder.service.PharmacyService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -14,9 +14,9 @@ public class QueueReceiver {
         this.pharmacyService = pharmacyService;
     }
 
-//    @KafkaListener(topics = "drugstore-data")
-//    public void receive(PharmacyDto pharmacyCreated) {
-//        pharmacyService.handleWithPharmacyCreatedEvent(pharmacyCreated);
-//    }
+    @KafkaListener(topics = "drugstore-data", groupId = "drugstore-group")
+    public void receive(PharmacyQueueReceiverDto pharmacyCreated) {
+        pharmacyService.handleWithPharmacyCreatedEvent(pharmacyCreated);
+    }
 
 }

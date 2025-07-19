@@ -3,6 +3,7 @@ package br.com.fiap.FarmaNear_Finder.service;
 import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.PharmacyClient;
 import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.GetDrugstoreByProductDto;
 import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.PharmacyDto;
+import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.PharmacyQueueReceiverDto;
 import br.com.fiap.FarmaNear_Finder.controller.dto.LocationDto;
 import br.com.fiap.FarmaNear_Finder.model.Pharmacy;
 import br.com.fiap.FarmaNear_Finder.repository.PharmacyRepository;
@@ -26,7 +27,7 @@ public class PharmacyService {
         this.client = client;
     }
 
-    public void handleWithPharmacyCreatedEvent(PharmacyDto pharmacyCreated) {
+    public void handleWithPharmacyCreatedEvent(PharmacyQueueReceiverDto pharmacyCreated) {
         String addressString = pharmacyCreated.address().street() + ", " +
                 pharmacyCreated.address().number() + ", " +
                 pharmacyCreated.address().complement() + ", " +

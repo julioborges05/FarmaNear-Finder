@@ -18,9 +18,9 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long> {
                 AND
                 (
                   6371 * acos(
-                    cos(radians(:lat)) * cos(radians(location[0])) *
-                    cos(radians(location[1]) - radians(:lng)) +
-                    sin(radians(:lat)) * sin(radians(location[0]))
+                    cos(radians(:lat)) * cos(radians(p.lat)) *
+                    cos(radians(p.lng) - radians(:lng)) +
+                    sin(radians(:lat)) * sin(radians(p.lat))
                   )
                 ) <= :radiusInKm
             ORDER BY distance_km
