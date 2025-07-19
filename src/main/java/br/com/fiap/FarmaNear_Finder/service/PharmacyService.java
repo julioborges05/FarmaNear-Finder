@@ -6,6 +6,8 @@ import br.com.fiap.FarmaNear_Finder.client.pharmacy.api.dto.PharmacyDto;
 import br.com.fiap.FarmaNear_Finder.controller.dto.LocationDto;
 import br.com.fiap.FarmaNear_Finder.model.Pharmacy;
 import br.com.fiap.FarmaNear_Finder.repository.PharmacyRepository;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class PharmacyService {
     private final PharmacyRepository repository;
     private final PharmacyClient client;
 
-    public PharmacyService(LocationService locationService, PharmacyRepository repository, PharmacyClient client) {
+    public PharmacyService(@Lazy LocationService locationService, PharmacyRepository repository, PharmacyClient client) {
         this.locationService = locationService;
         this.repository = repository;
         this.client = client;
@@ -44,7 +46,7 @@ public class PharmacyService {
         return Objects.requireNonNull(pharmacyDto).drugstores();
     }
 
-    public List<Pharmacy> findPharmaciesByCnpjNearLocation(List<String> cnpjList, LocationDto locationDto) {
-        return repository.findAllByCnpjInAndNearByLatAndLng(cnpjList, locationDto.lat(), locationDto.lng());
+    public List<Pharmacy> findPharmaciesByCnpjNearLocation(List<String> cnpjList, LocationDto locationDto, int radius) {
+        return repository.findAllByCnpjInAndNearByPoint(cnpjList, locationDto.lat(), locationDto.lng(), radius);
     }
 }

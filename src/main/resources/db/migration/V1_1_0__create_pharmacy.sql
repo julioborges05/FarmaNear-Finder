@@ -1,0 +1,5 @@
+CREATE TABLE pharmacy (
+  id SERIAL PRIMARY KEY,
+  cnpj VARCHAR(20) NOT NULL,
+  location POINT NOT NULL
+);

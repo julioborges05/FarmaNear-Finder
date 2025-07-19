@@ -1,10 +1,13 @@
 package br.com.fiap.FarmaNear_Finder.controller;
 
+import br.com.fiap.FarmaNear_Finder.controller.dto.FinderAddressReceiver;
+import br.com.fiap.FarmaNear_Finder.controller.dto.FinderCoordinatesReceiver;
+import br.com.fiap.FarmaNear_Finder.controller.dto.FinderResponse;
 import br.com.fiap.FarmaNear_Finder.controller.dto.LocationDto;
 import br.com.fiap.FarmaNear_Finder.service.LocationService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/finder")
@@ -21,10 +24,14 @@ public class FinderController {
         return locationService.getLocationByAddress(address);
     }
 
-    @GetMapping
-    public Map<String, LocationDto> findPharmaciesByProductAndAddress(@RequestParam String productName,
-                                                                      @RequestParam String address) {
-        return locationService.findPharmaciesByProductAndAddress(productName, address);
+    @GetMapping("/local/medicine/address")
+    public List<FinderResponse> findPharmaciesByProductAndAddress(@RequestBody FinderAddressReceiver finderReceiver) {
+        return locationService.findPharmaciesByProductAndAddress(finderReceiver);
+    }
+
+    @GetMapping("/local/medicine/coordinates")
+    public List<FinderResponse> findPharmaciesByProductAndAddress(@RequestBody FinderCoordinatesReceiver finderReceiver) {
+        return locationService.findPharmaciesByProductAndCoordinates(finderReceiver);
     }
 
 }

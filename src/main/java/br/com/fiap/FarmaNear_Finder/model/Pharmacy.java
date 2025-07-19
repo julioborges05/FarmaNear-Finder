@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.data.geo.Point;
 
 @Entity
 public class Pharmacy {
@@ -13,8 +14,7 @@ public class Pharmacy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cnpj;
-    private double lat;
-    private double lng;
+    private Point location;
 
     public Pharmacy() {
     }
@@ -22,14 +22,12 @@ public class Pharmacy {
     public Pharmacy(Long id, String cnpj, LocationDto locationDto) {
         this.id = id;
         this.cnpj = cnpj;
-        this.lat = locationDto.lat();
-        this.lng = locationDto.lng();
+        this.location = new Point(locationDto.lat(), locationDto.lng());
     }
 
     public Pharmacy(String cnpj, LocationDto locationDto) {
         this.cnpj = cnpj;
-        this.lat = locationDto.lat();
-        this.lng = locationDto.lng();
+        this.location = new Point(locationDto.lat(), locationDto.lng());
     }
 
     public Long getId() {
@@ -40,11 +38,7 @@ public class Pharmacy {
         return cnpj;
     }
 
-    public double getLat() {
-        return lat;
-    }
-
-    public double getLng() {
-        return lng;
+    public Point getLocation() {
+        return location;
     }
 }
