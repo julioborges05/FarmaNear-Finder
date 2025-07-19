@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 )
 public interface PharmacyClient {
 
-    @GetMapping("/product")
+    @GetMapping("/product/getDrugstoreByProduct")
     ResponseEntity<GetDrugstoreByProductDto> getDrugstoreByProduct(@RequestParam String productName);
 
 }

@@ -23,7 +23,6 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy, Long> {
                     sin(radians(:lat)) * sin(radians(p.lat))
                   )
                 ) <= :radiusInKm
-            ORDER BY distance_km
             """, nativeQuery = true)
     List<Pharmacy> findAllByCnpjInAndNearByPoint(List<String> cnpjList, double lat, double lng, int radiusInKm);
 

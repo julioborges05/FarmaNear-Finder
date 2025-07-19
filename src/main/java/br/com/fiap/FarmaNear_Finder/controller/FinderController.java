@@ -24,12 +24,12 @@ public class FinderController {
         return locationService.getLocationByAddress(address);
     }
 
-    @GetMapping("/local/medicine/address")
+    @PostMapping("/local/medicine/address")
     public List<FinderResponse> findPharmaciesByProductAndAddress(@RequestBody FinderAddressReceiver finderReceiver) {
         return locationService.findPharmaciesByProductAndAddress(finderReceiver);
     }
 
-    @GetMapping("/local/medicine/coordinates")
+    @PostMapping("/local/medicine/coordinates")
     public List<FinderResponse> findPharmaciesByProductAndAddress(@RequestBody FinderCoordinatesReceiver finderReceiver) {
         return locationService.findPharmaciesByProductAndCoordinates(finderReceiver);
     }
