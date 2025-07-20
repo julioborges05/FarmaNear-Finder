@@ -65,7 +65,7 @@ public class LocationService {
             PharmacyDto pharmacyDto = pharmacyDtoMap.get(pharmacy.getCnpj());
             if (pharmacyDto == null) continue;
 
-            LocationDto location = new LocationDto(pharmacy.getLocation().getY(), pharmacy.getLocation().getX());
+            LocationDto location = new LocationDto(pharmacy.getLocation().getX(), pharmacy.getLocation().getY());
             responseList.add(new FinderResponse(pharmacyDto.cnpj(), pharmacyDto.name(), location));
         }
 
